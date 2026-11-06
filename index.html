@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teresa Ngo - English Practice</title>
+<style>
+:root{--bg:#fff0f6;--ink:#3b1d2e;--mut:#8a6577;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--line:#f9cfe3}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.5}
+header{background:linear-gradient(135deg,#ec4899,#f9a8d4);padding:10px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #be185d33}
+header h1{margin:0;font-size:20px;flex:1;color:#fff;text-shadow:0 1px 2px #9d174d55}
+.hbtn{border:none;background:#fff;border-radius:12px;font-size:20px;padding:6px 10px;cursor:pointer}
+main{max-width:920px;margin:0 auto;padding:14px}
+footer{text-align:center;padding:18px;color:var(--mut);font-size:14px;border-top:1px dashed var(--line);margin-top:30px}
+h2{margin:6px 0;color:#9d174d}h3{margin:0 0 8px;color:#9d174d}
+.hero{display:flex;gap:14px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:14px}
+.hero .big{font-size:44px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.lcard{border:none;border-radius:18px;padding:16px;color:#fff;text-align:left;cursor:pointer;box-shadow:0 5px 0 #9d174d33;font:inherit;transition:transform .1s}
+.lcard:active{transform:translateY(3px)}
+.lcard span{display:block}.lcard b{font-size:28px;display:block}
+.lcard .u{font-size:13px;opacity:.9}
+.lcard .stars{margin-top:8px;font-size:13px;background:#ffffff38;border-radius:8px;padding:2px 8px;display:inline-block}
+.box{background:#fff;border-radius:16px;padding:14px 16px;margin:12px 0;box-shadow:0 2px 6px #be185d14}
+.tip{background:#fdf2f8;border:2px dashed #f9a8d4}
+.lhead{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tab{border:2px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;cursor:pointer;font:inherit;font-size:15px;color:var(--ink)}
+.tab.on{background:var(--c);border-color:var(--c);color:#fff}
+.btn{border:none;background:var(--c,#ec4899);color:#fff;border-radius:12px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer;display:inline-block}
+.btn.ghost{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.mini{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:14px;cursor:pointer;display:inline-block;color:var(--ink)}
+.mini.on{background:var(--c,#ec4899);color:#fff;border-color:transparent}
+.note{font-size:14px;color:var(--mut)}
+.num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c,#ec4899);color:#fff;font-weight:700;flex:none;margin-right:6px}
+.qh{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}.qh .sp{flex:1}
+.opts{display:grid;gap:8px}.abc{display:flex;gap:10px}
+.opt{display:flex;gap:10px;align-items:center;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;text-align:left;color:var(--ink)}
+.abc .opt{flex:1;justify-content:center}
+.opt .L{flex:none;width:34px;height:34px;border-radius:50%;background:#fce7f3;display:grid;place-items:center;font-weight:700;color:#9d174d}
+.opt.sel{border-color:#ec4899;background:#fdf2f8}
+.opt.ok{border-color:var(--ok);background:#dcfce7}
+.opt.bad{border-color:var(--bad);background:#fee2e2}
+.fb{margin-top:10px}.vd{font-weight:700;display:block;margin-bottom:4px}
+.script{background:#fdf2f8;border-left:4px solid var(--c,#ec4899);padding:8px 12px;border-radius:8px;margin:8px 0;font-size:16px}
+.chip{display:inline-block;background:#fce7f3;border-radius:8px;padding:2px 8px;margin:2px;font-size:14px}
+.notes{margin-top:8px}
+.abox{background:#fff;border-radius:16px;padding:12px 16px;margin:12px 0;border:2px solid var(--c,#f472b6)}
+.abox audio{width:100%;margin:6px 0}
+.dl{margin:6px 0;line-height:2.2}
+.blank{display:inline-flex;align-items:baseline;gap:2px;margin:0 2px}
+.blank i{color:#c084a5;font-style:normal;font-size:14px}
+.blank input,.spin{width:105px;font:inherit;border:none;border-bottom:2px solid #f9a8d4;background:#fdf2f8;padding:2px 4px;border-radius:4px 4px 0 0}
+.blank input.ok{border-color:var(--ok);background:#dcfce7}
+.blank input.bad{border-color:var(--bad);background:#fee2e2}
+.blank input.unk{border-color:var(--warn);background:#fef3c7}
+.res{font-size:22px;margin:10px 0}
+.next{text-align:right;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}td{padding:6px;border-bottom:1px solid var(--line);vertical-align:middle}
+details summary{cursor:pointer}
+a{color:#db2777}
+.spk-item{border:2px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff}
+.spk-item .qh{margin-bottom:4px}.sres{margin-top:6px}
+.recbtn{font-weight:600}
+.recbtn.on{background:#dc2626;color:#fff;border-color:#dc2626;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+.wd-ok{color:#16a34a;font-weight:600}.wd-miss{color:#dc2626;text-decoration:underline wavy}
+.score{font-size:19px;font-weight:700;margin:4px 0}
+.pb audio{width:100%;max-width:360px;height:36px;vertical-align:middle}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.best{font-size:13px;color:var(--mut)}
+@media(max-width:560px){body{font-size:16px}.blank input,.spin{width:84px}.abc .opt{padding:10px 6px}}
+</style>
+</head>
+<body>
+<header><button class="hbtn" data-go="home" title="Trang chủ">🏠</button><h1>Teresa Ngo - English Practice</h1><button class="hbtn" data-go="audio" title="Âm thanh">🎧</button></header>
+<main id="app"></main>
+<footer>Prepared by ngqhuy173@gmail.com</footer>
+<script>window.onerror=function(m,s,l,c){var a=document.getElementById("app");if(a)a.innerHTML='<div style="background:#fee2e2;padding:12px;border-radius:12px">Lỗi: '+m+' (dòng '+l+', cột '+c+')</div>';};</script>
+<script>
+/* ===== DỮ LIỆU (theo sách, Lesson 9–16) ===== */
+const DRIVE="10pb5ousdRyE-TG4UW90g31nW3Oh9CwYV 11THNol1vFjyDvKKRk1Turboakx9v93e6 15RL9AlmQ3jOsd7ZHyPRYj4wtuYBnVhcH 15bQkcVmZTwrxEHWTN7jzZ2zQUNXynWzA 162bymoDUo8aEQz9ltMx0GteBvk5MmhlA 17d0lwQjKNqToQzHF1YJ4v0if1MPO6uuR 18CbiM7gOMnMIpGLqfEEFeGOkrxl52n6h 18ti3x_q7-f_Nj5G2DwLzVoLsgauyQNPB 1A2rdC5c_uTJMsujW6ZsXXIqs1I8YysfB 1Bg1UUyrP40t3LgD_JmzjHgc9_gmzIjr- 1BsoT8poYiRpx_hlqVMakFRJIhkNjdbYG 1C5nZ2M6TnNwbM0Rm4HBJxYn3myRZoc2v 1E0AplHouK3qjNhp8BwUPHpnmxhUIU_pU 1EqyUVOqZm0f_Gy2bBf8kI-Dob2gD5Q0W 1Gn46r7hgvcsqh-t7jBzpkkaHQ_b0W6Df 1IwXpPTkGKXxaBy_rIdBf2BqFD6IzYasW 1KW-Lv-BYf-WuWRNi7beDZpUFqJ7LQ80A 1L2mtTsX9odl-wK_Y9iCMA-jNrakorFi9 1LH5Xh1oi4Aw4tec6en21najMT9q4cpEQ 1LdqURUhESk3p0kv9x_Q6u0OylBAJvHsC 1NqRj2ETPqG8a2Co3-ynR9xgHjHB0LxHI 1TIBkCqrjxt_clgYo5mnij7PkI_-ywrMV 1V2Jykp3aR2v9Qy1Q2uEgYpo_ONM99HJi 1VIOdUBV8eBhym3ABBrraxlzeVrB_tjr2 1WGCG0XTXdSO1FrEGM0zJsTEAhJmw9dF7 1WGKqaWKASBLkpl4iE3l4tKrMrsQLyfdp 1XxuB9mr9S3SAIeXiv9QTQG7eAidDsLZD 1ZsyB34Ey7fh8FhfYagBgZWVuVhiLIT3A 1_JdOoXIXod2hdLGl7ZTjGfC_Sjr7O_Pb 1aBdbaENbNYMhoVrNH5_o5vN2q3jVBAUu 1c1viTb3qESkPwUtZqxLz0EprpWe15T3j 1g7R5f9g6b8kTGoeNkwne6LcE2mhi-8Z0 1ho3AOq_Cet2q5oNVVm0qITwtee8OHofr 1l2IXeSEkDKBeJofq5zVj1FAezeQnDHtM 1lTHnZwqeAd6Acx7aOk8avf0JnD-cucW0 1m61Tc92Z9kbOkbwjYjAclFZ3B19WK-9Q 1mTzYyv9oVvce4zdsrSeqML20oxH8e0QZ 1p45GE6S0OFZgQcm4ZwpU7zRJoKVzXsPE 1r5iMpG9C097lg3QTAtUsJTbs66fdzwbH 1rCSNJec7hChlkeI6QAZ2BnV9GcMu_uo5 1sO4x_QUtlbKmXWTi3hRu_1CBDZAKQWcj 1sV_nLeG55aYfwWtbm1El_hvp7E09yLXZ 1scjQNlfMYTYW6jt6HvwK5Ztbh4QNYiAY 1utoF2BLoox5QI9FW0VkfuB19wg7S45ze 1v3joHnTTtrd_3q95NCAEE0laCR3F7en3 1vT7Ke-sCzDig1PH46im9ggrNDqO6RvsQ 1vVUlRCgcMTUVrrc3QY9NgQO9q4h8zY4q 1ynlJKB3J68Yh9LqPkTy9STP_ikz460JB 1zRXC5q7nHgFAdsgYTXAmSVCBej7TFmY0 1zeCxG4XTAMFELj2Zwiw31NFW8WhLdQid".split(" ");
+
+const TIP_P4=["Trước khi nghe, đọc nhanh câu hỏi và các lựa chọn, rồi nghe kỹ thông tin liên quan.","Vừa nghe vừa gạch bỏ đáp án sai."];
+const LESSONS=[
+{n:9,c:"#ec4899",t:"What is on the desk?",u:"Unit 6 · Listening Part 1",pg:"73–80",pic:true,
+ qt:"Nghe một câu, nhìn 3 tranh, chọn tranh đúng.",
+ tips:["Xem kỹ đặc điểm từng tranh trước khi nghe.","Tranh về người hoặc con vật: nghe kỹ họ đang làm gì và các chi tiết khác.","Tranh về đồ vật: nghe kỹ hình dạng, kích thước, màu sắc, số lượng."],
+ ex:{t:1,pg:"74–75",items:[
+  {o:["👧📷 A girl holding a camera","👧💧 A girl drinking water","👧🪴 A girl watering a plant"],k:"B",s:["She is drinking water."],w:"Câu hỏi về việc một người đang làm: tìm tranh bạn gái đang uống nước."},
+  {o:["🪆 A doll under the bench","👧🪆 A girl on the bench holding a doll","🪆 A doll next to the bench"],k:"A",s:["There is a doll under the bench."],w:"Câu hỏi về vị trí đồ vật: tìm tranh búp bê ở dưới ghế dài."}]},
+ sp:[{p:"instead of ~",e:["He is watching TV instead of a movie.","They take a taxi instead of a bus."],y:"She is eating ___ instead of ___."},
+     {p:"too ~ to ~",e:["I'm too tired to do my homework.","He is too busy to go for a walk."],y:"Science is too ___ to ___."}],
+ pr:{t:2,pg:"76–77",items:[
+  {o:["🐷🧺 A pig in a basket with a bow","🐷🎀 A pig with a bow on its tail","🐷🎀 A pig with a bow around its neck"],nt:["around","neck"]},
+  {o:["🎁 Presents on a table","🧑🎁 A man holding presents","🧑💧 A man drinking water"],nt:["hold","present"]},
+  {o:["🐶🐶 Two dogs running","👫🐶🐶 A couple walking two dogs","👧🐶 A girl walking a dog"],nt:["couple","walk"]},
+  {o:["🐊 A crocodile in the middle of a pond","🐊 A crocodile climbing out of a pond","👦🐊 A boy holding a toy crocodile"],nt:["in the middle of ~","pond"]},
+  {o:["🚗🚙 A road full of cars","🚪 An empty room","🛣️ An empty road"],nt:["road","empty"]},
+  {o:["👓 Glasses on a table","👗 A woman in a pink dress","👓📰 A woman with glasses reading a newspaper"],nt:["a pair of ~","a pair of glasses","a pair of socks","a pair of scissors"]},
+  {o:["🧥🧥 Two same yellow jackets in a window","👧👧 Two girls looking at a lamp","👦👧 A boy and a girl in the same uniforms"],nt:["both","the same"]},
+  {o:["👦👧👵 Boy – girl – grandma on a bench","👦👵👧 Boy – grandma – girl on a bench","👧👵 Girl and grandma sit, boy stands behind"],nt:["sit – sat","next to ~","instead of ~"]}]},
+ mt:{t:3,pg:"78–79",items:[
+  {o:["🕯️ Three candles on a candle holder","🍰 Three pieces of cake","🎂 A cake with three candles"],k:"C"},
+  {o:["🐱🧶 A cat playing with yarn","🧑🐱 A man feeding his cat","🧑🐱 A man petting the cat on his lap"],k:"C"},
+  {o:["👧 A girl in a too-small sweater","👧 A girl in a too-big sweater","👧🧶 A girl knitting"],k:"B"},
+  {o:["📺 A girl turning on the TV with a remote","📺🐱 A girl waving at a cat on TV","💡 A girl turning on the light"],k:"A"},
+  {o:["💪 A boy holding his hurt arm","🦵 A boy holding his hurt knee","🤕 A boy with a bandage on his head"],k:"B"},
+  {o:["🥇 A boy on the winner's stand","🎤 A boy singing with a medal","🏅 A boy standing with a medal"],k:""},
+  {o:["🐍 A girl touching a snake","📖🐍 A girl looking at a snake in a book","🙈 A girl covering her face at the zoo"],k:"C"},
+  {o:["🍼🔵🟡 A bottle, a blue cup, a yellow cup","🔴🔵🟡 Red (small), blue, yellow (big)","🟡🔵🔴 Yellow (small), blue, red (big)"],k:"B"}]},
+ dt:{pg:"80",items:[
+  ["There {a|are} three {c|candles} on a cake."],
+  ["The man is {p|petting} his cat."],
+  ["She is too {s|small} {f|for} the sweater."],
+  ["She {t|turns/turned} {o|on} the television."],
+  ["The boy {h|hurt/hurts} his knee."],
+  ["He {w|won} first {p|place} in the singing contest."],
+  ["The little girl is too {s|scared} to {s|see} the snake."],
+  ["The blue cup is {s|smaller/shorter} than the yellow cup, but it is {b|bigger/taller} than the red cup."]]}},
+
+{n:10,c:"#db2777",t:"What did she say?",u:"Unit 7 Instructions · Listening Part 2",pg:"83–91",pic:true,
+ qt:"Nghe một lời mô tả/lời dặn ngắn, chọn 1 trong 3 tranh.",
+ tips:["Nhanh chóng tìm điểm khác nhau giữa 3 tranh.","Nghe kỹ lời dặn bảo mọi người phải làm gì.","Đừng nhầm giữa việc NÊN làm và KHÔNG được làm."],
+ ex:{t:4,pg:"84–85",items:[
+  {o:["🎒 Kids hanging backpacks on hooks by the door","👧👧 Two girls saying hello at the door","👦🎒 A boy putting things in his backpack"],k:"A",s:["M: Good morning, everyone. Please hang your backpack on a hook by the door."],w:"Tìm tranh các bạn đang treo ba lô lên móc cạnh cửa."},
+  {o:["🧥 A child in a raincoat and boots","⛄ A child in winter clothes in the snow","☂️ A girl with an umbrella and rain boots"],k:"C",s:["W: It is raining outside. Please put on your rain boots and take an umbrella, so you don't get dirty or wet."],w:"Tìm tranh bạn mang ủng đi mưa và cầm ô."}]},
+ sp:[{p:"I'd like to ~",e:["I'd like to have a new phone.","I'd like to sit next to Sally."],y:"I'd like to ___."},
+     {p:"It's time to ~",e:["It's time to finish the class.","It's time to go to bed."],y:"It's time to ___."}],
+ pr:{t:5,pg:"86–87",items:[
+  {o:["🎧 A girl listening to music alone","🎧👦 A girl and a boy listening together","🎤 A boy talking into a microphone"],nt:["partner","two times"]},
+  {o:["🚫🗣️ A boy yelling at a girl","🚫🗑️ A girl throwing trash on the floor","🚫👊 Two boys fighting"],nt:["yell","hurt"]},
+  {o:["🚰 A girl turning off the water","🪟 A girl opening the curtains","💡 A girl turning off the light"],nt:["turn off","save","save energy","save time"]},
+  {o:["🐸 Two kids looking at a frog picture","📖 Two kids sharing a book","✏️🐸 A girl drawing a frog"],nt:["share","each one of you"]},
+  {o:["🎨 A girl painting neatly","🖼️ A girl looking at a painting","🎨 A boy with messy paint on his hands"],nt:["messy","paint"]},
+  {o:["🚗 A girl giving a toy car back to a boy","🧸 A girl putting a teddy bear in a toy box","🚗 A girl and a boy playing with a toy car"],nt:["give back","take – took","without asking"]},
+  {o:["🤝 Tony and Yuri shaking hands","🧑‍🏫 A boy talking in front of the class","✍️ A girl writing 'Yuri' on the board"],nt:["would like to ~","introduce","move to"]},
+  {o:["⚖️ A boy on a scale","🥗 A boy eating vegetables","🥤 A boy drinking a sweet drink"],nt:["like: healthy foods like fruits","test results","too much sugar","plan a diet"]}]},
+ mt:{t:6,pg:"88–89",items:[
+  {o:["✋ A girl raising her hand","📄 A girl passing a paper to a boy","📄 A boy giving a paper to the teacher"],k:"A"},
+  {o:["👟 A boy putting on his shoes","🪑 A boy sitting on a stool","🏃 A boy running"],k:"A",u:1},
+  {o:["♿ A boy pushing a wheelchair","🚦 A boy helping a man cross the street","🪑 A boy helping a man stand up from a chair"],k:"C"},
+  {o:["📺 Kids watching a video in class","🧑‍🏫 A teacher giving something to a girl","🐯 A boy pointing at a tiger on TV"],k:"A",u:1},
+  {o:["🥛 A boy rinsing his mouth","🪥 A woman brushing a boy's teeth","🪥 A boy putting toothpaste on his brush"],k:"C"},
+  {o:["🤕 A man helping a boy who fell","🏃 Kids running outside","🚶 Kids walking in the hallway"],k:"C"},
+  {o:["✏️ A girl drawing","🗂️ A girl writing word cards","🗂️ Two kids holding word cards"],k:"B"},
+  {o:["🍝 A man and a girl eating","😮 A girl eating noisily","🙂 A girl eating with her mouth closed"],k:"C"}]},
+ dt:{pg:"90–91",items:[
+  ["W: Now it's time to {f|finish} {t|the} {t|test}. Raise your hand if you're finished writing all your answers."],
+  ["W: We are going to go for a long walk. Please {p|put} {|on} your running shoes that are sitting by the door."],
+  ["M: I am getting very old. Sometimes I need help. Can you please {c|come} {o|over} here and help me out of my chair? Just {t|take} {|my} {h|hand} while I try to stand up."],
+  ["M: Today, we will {l|learn} {a|about} wild animals. Please sit with your hands in your lap and watch this video. It will not {t|take} a very long {t|time}."],
+  ["W: Sam, your teeth look very yellow. You should try {b|brushing} {y|your} {t|teeth} with this toothpaste. Here is a new toothbrush too."],
+  ["W: Stop running in the hallway! You need to calm down and walk slowly. If you are running too fast, you might accidently {b|bump} {i|into} another student or a teacher."],
+  ["M: To help you memorize your vocabulary words, we're going to make flashcards. Please write the {w|word} on the front of the card and write the {m|meaning} of the word on the back of the card. These flashcards will help you during your quiz."],
+  ["M: Hey, I can see the spaghetti noodles in your mouth. Please {c|chew} {y|your} {f|food} with your mouth closed. If your mouth {|is} {o|open} while you eat, everyone can see the chewed food, and it is very noisy."]]}},
+
+{n:11,c:"#c026d3",t:"Can you help me?",u:"Unit 8 Short Conversations · Listening Part 3",pg:"93–101",
+ qt:"Nghe một hội thoại ngắn về đời sống ở trường, chọn câu đáp đúng (3 lựa chọn).",
+ tips:["Hội thoại đơn giản thường gặp ở trường, thư viện, phòng y tế hoặc xe buýt trường.","Cố hiểu người nói đang nói gì rồi chọn câu đáp hợp nhất.","Câu hỏi và lựa chọn KHÔNG in trên đề, nên phải nghe thật kỹ."],
+ ex:{t:7,pg:"94–95",items:[
+  {k:"A",s:["B: Do you want to play on the slide?","(A) Yes, of course.","(B) No, she is not nice.","(C) Yes, we'd better go home."],w:"Bạn rủ chơi cầu trượt → đáp đồng ý: “Yes, of course.”"},
+  {k:"B",s:["B: The slide is really fun. What do you want to do next?","(A) Yes, it's right here.","(B) Let's go on the swings.","(C) Sure, that would be fine."],w:"Hỏi muốn làm gì tiếp → “Let's go on the swings.”"}]},
+ sp:[{p:"be good at ~",e:["Eric is good at math.","I'm good at playing the piano."],y:"My father is good at ___."},
+     {p:"Do you think ~?",e:["Do you think she is smart?","Do you think you are a good son?"],y:"Do you think ___?"}],
+ pr:{t:8,pg:"96–97",items:[
+  {nt:["by the door","by the river","be good at ~","soon"]},{nt:[]},
+  {nt:["practice","swim practice","piano practice","swim – swam","swimming pool"]},{nt:["win the race","try my best"]},
+  {nt:["scratch","bandage","trip on the stairs"]},{nt:["wrap up your knee","interesting","do my best"]},
+  {nt:["what kind of ~","adventure","scare"]},{nt:["library card","over there"]}]},
+ mt:{t:9,pg:"98–99",items:[{k:"B"},{k:"A"},{k:"B"},{k:"C"},{k:"B"},{k:"C"},{k:"B"},{k:"A"}]},
+ dt:{pg:"100–101",items:[
+  ["G: Which one is your locker?","(A) I am right-handed.","(B) The one {|on} {t|the} {l|left}.","(C) Please walk forward."],
+  ["G: Can you {h|help} {|me} {c|carry} my books to class?","(A) Sure, I can help you.","(B) Yes, I have many books.","(C) The history book {|is} {h|heavy}."],
+  ["M: Where do you live?","(A) Please stop the bus.","(B) Just {d|down} {t|the} {s|street}.","(C) You are a good driver."],
+  ["M: Please find a seat and sit down.","(A) I can't see anything.","(B) It's very cold {|in} {h|here}.","(C) But all the seats {a|are} {f|full}."],
+  ["W: Please {s|sit} {d|down} at this table to read.","(A) I like my reading teacher.","(B) Thank you, I will.","(C) I can't decide."],
+  ["W: Is this book {h|hard} {|to} {r|read}?","(A) No, I can't look right now.","(B) Maybe, it's hard to {c|choose} just one.","(C) Yes, the book is very hard to understand."],
+  ["M: {H|how} {m|much} do you know about math?","(A) I think there are too many.","(B) I don't really {k|know} {|a} {l|lot}.","(C) That sounds fun."],
+  ["M: Can you answer this math problem?","(A) Sure, {|I} {c|can} {t|try}.","(B) I read it last week.","(C) I said many things."]]}},
+
+{n:12,c:"#e11d48",t:"How are you feeling?",u:"Unit 8 Short Conversations · Listening Part 3",pg:"102–109",
+ qt:"Nghe một hội thoại hằng ngày, chọn câu đáp đúng (3 lựa chọn).",
+ tips:["Hội thoại đơn giản ở cửa hàng, cửa hàng thú cưng, nhà hàng và nơi khác.","Tìm đúng ý của câu nói rồi chọn câu đáp hay nhất.","Câu hỏi và lựa chọn KHÔNG in trên đề, nên phải nghe thật kỹ."],
+ ex:{t:10,pg:"102–103",items:[
+  {k:"B",s:["W: Welcome to Super Shoes. What shoe size do you wear?","(A) I can't see them.","(B) I wear a size seven.","(C) Those tennis shoes look nice."],w:"Hỏi cỡ giày → “I wear a size seven.”"},
+  {k:"B",s:["W: The shoes come in many different colors. Which color would you like?","(A) The hat is green.","(B) I will take the blue pair.","(C) My mother likes the yellow color."],w:"Hỏi chọn màu → “I will take the blue pair.”"}]},
+ sp:[{p:"Would you like to ~?",e:["Would you like to come to my house?","Would you like to leave a message?"],y:"Would you like to ___?"},
+     {p:"look like ~",e:["You look like an actor.","It looks like a new school bus."],y:"He looks like ___."}],
+ pr:{t:11,pg:"104–105",items:[
+  {nt:["headache","have a headache"]},{nt:["bump","corner","lie down","feel dizzy"]},
+  {nt:["trip and fall","watch your step"]},{nt:["scan","scan your bus card","good to see you"]},
+  {nt:["which","fur","fluffy"]},{nt:["right now"]},{nt:["favorite"]},{nt:["try on","another","a little"]}]},
+ mt:{t:12,pg:"106–107",items:[{k:"B"},{k:"C"},{k:"B"},{k:"B"},{k:"A"},{k:"C"},{k:"A"},{k:"C"}]},
+ dt:{pg:"108–109",items:[
+  ["M: Hello there, {h|how} {c|can} {|I} help you?","(A) Yes, it's on the table.","(B) Hi, my cat is very sick.","(C) Now I feel happy."],
+  ["M: I think your cat will {f|feel} {f|fine} in a few days.","(A) I feel very sad today.","(B) You are {v|very} {k|kind} {|?} {|?}.","(C) Thank you, I was worried."],
+  ["W: Hey, I {h|have} {|a} {j|job} for you.","(A) I can't remember.","(B) Oh, really? What is it?","(C) Do you like your job?"],
+  ["W: Can you please {w|?} {t|the} {f|?} for me?","(A) OK, I won't.","(B) Yes, I certainly will.","(C) You can {c|?} {|?} {s|?} {|?}."],
+  ["W: Would you like {s|some} {i|ice} {c|cream} for dessert?","(A) Sure, that sounds good.","(B) I cannot go there.","(C) No, I don't like you."],
+  ["W: What flavor of ice cream do you want?","(A) {J|just} {t|?}, {p|please}.","(B) {P|?} {|?} the sugar.","(C) I will have chocolate."],
+  ["W: Welcome to Dazzling Dresses. There is a {b|big} {s|sale} {|on} dresses today.","(A) Great, I love sales.","(B) There is a 50% discount.","(C) I heard him {|on} {t|the} {r|radio}."],
+  ["W: It {l|looks} {l|like} you found the perfect dress.","(A) I can't find the zipper.","(B) No, his pants are too big.","(C) I agree. This dress is very lovely."]]}},
+
+{n:13,c:"#be185d",t:"What does he want?",u:"Unit 9 Long Conversations · Listening Part 4",pg:"111–119",
+ qt:"Nghe hội thoại giữa hai người ở trường, chọn đáp án đúng (3 lựa chọn).",
+ tips:["Hội thoại giữa học sinh và giáo viên, thủ thư và học sinh, hai bạn ở trường…"].concat(TIP_P4),
+ ex:{t:13,pg:"112–113",items:[
+  {q:"What does the boy want?",o:["An eraser","Some paper","One more pencil"],k:"C",s:["B1: This test looks hard.","B2: I agree. Do you have a pencil I can borrow?","B1: Yeah, here you go.","B2: Thanks, I just want to have an extra one."],w:"Hai bạn đang làm bài kiểm tra; một bạn muốn mượn thêm một cây bút chì."},
+  {q:"What will the boy do next?",o:["Read a book","Hang up his coat","Sit down in a chair"],k:"C",s:["W: Hello. Welcome to my classroom.","B: Thanks. I am excited to start a new class.","W: How about you find somewhere to sit?","B: OK, I'll do that right now."],w:"Cô bảo tìm chỗ ngồi, bạn nam nói sẽ làm ngay → ngồi xuống ghế."}]},
+ sp:[{p:"Why don't you ~?",e:["Why don't you play outside?","Why don't you use the library at school?"],y:"Why don't you ___, Alice?"},
+     {p:"That's why ~",e:["That's why I was late for school.","That's why she has so many friends."],y:"That's why I ___."}],
+ pr:{t:14,pg:"114–115",items:[
+  {q:"What will the girl do next?",o:["Fix a hook in the closet","Put her jacket in the closet","Hang her backpack by the door"],nt:["hang up","hook","closet","fix"]},
+  {q:"What will the boy do next?",o:["Sit down at a table","Find a book about bears","Finish his research project"],nt:["research","a bunch of ~","look at"]},
+  {q:"Why does the girl need a name tag?",o:["It is for her homework.","It is the last day of school.","So her classmates know her name."],nt:["the first day of school","name tag","that's why ~"]},
+  {q:"What will the girls do next?",o:["Read more action books","Go home to eat pizza","Go to the cafeteria"],nt:["full of ~","kind of hungry"]},
+  {q:"What will the boy do next?",o:["Bring a new paint brush","Clean his paint brushes","Paint his partner's face"],nt:["look exactly like ~","Good job!","be covered in ~","sink"]},
+  {q:"Why does the girl not want to sing?",o:["She is nervous about singing.","Her teacher doesn't like her.","She is better at painting."],nt:["nervous","one time","laugh at ~","make mistakes"]},
+  {q:"What will the girl do next?",o:["Look at the calendar","Plan the next field trip","Ask the teacher a question"],nt:["field trip","why don't you ~?","plan"]},
+  {q:"What does the boy want to do?",o:["Write about his art teacher","Write about his math teacher","Write about the science experiment"],nt:["journal","science experiment","what I enjoy the most"]}]},
+ mt:{t:15,pg:"116–117",items:[
+  {q:"What does the girl want to do?",o:["Paint in art class","Draw a pretty cup","Make a clay bowl"],k:"C"},
+  {q:"What will the boy do next?",o:["Tie his shoelaces","Change his shoes","Run around the track"],k:"B"},
+  {q:"Where will the girl go next?",o:["To the bathroom","To the video room","To the movie theater"],k:"B"},
+  {q:"What do the girls agree to do?",o:["Play a review game","Sit by each other in class","Study for the test together"],k:"C"},
+  {q:"Why does the boy have a bad headache?",o:["He was jumping too high.","A book fell on his head.","He fell off the ladder."],k:"B"},
+  {q:"What does the girl remember to do?",o:["Bring the janitor towels","Clean the desks","Go to the office"],k:"A"},
+  {q:"How will the boy get water?",o:["By buying a bottle of water","From the fountain in the hallway","From the sink"],k:"C"},
+  {q:"What does the girl want to do?",o:["Make a tall building","Build a house like hers","Put away the building blocks"],k:"B"}]},
+ dt:{pg:"118–119",items:[
+  ["W: Our art project today is to make a clay cup.","G: Can I make a bowl {i|instead} {|of} a cup, please?","W: {|I} {d|don't} {t|think} that is a good idea.","G: Please, I think it would turn out really well."],
+  ["M: Today we are going to run around the track four times.","B: Oh, I didn't know we were doing that today. I'll switch my shoes.","M: Why do you need to do that?","B: Because the shoes I'm wearing are {n|not} {f|for} {r|running}."],
+  ["W: Are you {l|looking} {f|for} something? Do you need my help?","G: I need to find a video and a book on farm animals.","W: Oh, well, I see you found a book about farm animals.","G: Yes, I did. Now I just need to find a video {|about} {t|the} {s|same} {t|topic}.","W: We keep all videos in the video room. If you can't find it, just come to me again."],
+  ["G1: Are you ready for our English test tomorrow?","G2: No. Are you?","G1: Yeah, but I can't understand the review handout. Do you get it?","G2: Not really, I think it's really hard. Do you want to {s|study} {t|together} tonight?","G1: Yes, that would be great."],
+  ["W: So, tell me, why do you have such a bad headache?","B: I was trying to reach up and get a book on the top shelf.","W: Let me guess. You accidently knocked down several books.","B: Yes, many books fell, and one really big book {h|hit} {|my} {h|head}.","W: I can see that from the bump on the back of your head. Let's {p|put} some {i|ice} {|on} {|it}."],
+  ["M: Thank you for bringing me these paper towels.","G: You're welcome. My teacher reminded me to after class. She said you needed them as soon as possible.","M: Good, I'm glad you did that. It's always nice to talk to students.","G: I'd like to say thank you for all you do for our school. You {k|keep} everything {|so} {c|clean}!","M: Of course, that's my job. And I really like that you care."],
+  ["W: OK, let's open our books to page seven and {b|begin} {r|reading}.","B: Before we start reading, may I please get a drink of water out in the hallway? I am very thirsty.","W: Oh, you can use the sink in the classroom to get water. But please be quick.","B: OK, thank you.","W: Be sure to use a paper cup to drink the water."],
+  ["M: I like how neatly you can stack all of the building blocks together.","G: Thank you. I really like playing with the building blocks. They are {f|fun} {|to} {p|play} {w|with}.","M: You should {t|try} {m|making} a tall building with them, like the buildings outside of the school.","G: Hmm, I think I would rather build a house that looks exactly like mine.","M: Oh, that's a brilliant idea. I'm sure it will be really fun to build."]]}},
+
+{n:14,c:"#a21caf",t:"What will she do next?",u:"Unit 9 Long Conversations · Listening Part 4",pg:"120–127",
+ qt:"Nghe hội thoại hằng ngày giữa hai người, chọn đáp án đúng (3 lựa chọn).",
+ tips:["Hội thoại giữa bố mẹ và con, anh chị em, người bán và khách, bác sĩ và bệnh nhân…"].concat(TIP_P4),
+ ex:{t:16,pg:"120–121",items:[
+  {q:"Why will they go to the park?",o:["To play soccer outside","To get the girl's shoes","To go on the playground"],k:"A",s:["B: It's so sunny outside!","G: I really want to play soccer.","B: Oh, that's a great idea. Let's go to the park to play.","G: OK, I will get my soccer ball and shoes."],w:"Bạn gái muốn đá bóng, bạn trai rủ ra công viên chơi → đá bóng ngoài trời."},
+  {q:"What will the girl do next?",o:["Take off her hat","Put on some earrings","Try on the gold necklace"],k:"C",s:["W: Would you like to see any of our necklaces?","G: Yes, that gold one with pink jewels, please.","W: Oh, that one is lovely. Can I help you put it on?","G: Yes, that would be very helpful."],w:"Người bán giúp bạn gái đeo thử dây chuyền vàng."}]},
+ sp:[{p:"It seems like ~",e:["It seems like a dream.","It seems like a holiday."],y:"It seems like ___."},
+     {p:"There is nothing to ~",e:["There is nothing to drink in the refrigerator.","There is nothing to worry about."],y:"There is nothing to ___."}],
+ pr:{t:17,pg:"122–123",items:[
+  {q:"What does the son want to do?",o:["Watch a funny movie","Buy some candy for the movie","See a scary movie with his mom"],nt:["a scary movie","frightened","would rather ~"]},
+  {q:"How did the girl break her leg?",o:["She was jumping rope after school.","She was riding her bike and fell off.","She was climbing a tree and fell."],nt:["result","a pretty big tree","jump rope"]},
+  {q:"What will the girl do next?",o:["Ask for her shoe size","Try on the shoes","Go for a run"],nt:["cool","comfortable","agree","hand"]},
+  {q:"What does the boy agree to do?",o:["Write a letter to his neighbor","Give the package to his neighbor","Help the mail carrier find his neighbor"],nt:["mail carrier","neighbor","package"]},
+  {q:"Why does the boy buy the hat?",o:["To play with it","To keep it for himself","To give it to his friend"],nt:["look good on","look for ~","discount"]},
+  {q:"What will the daughter do next?",o:["Take a rest","Go to a movie","Play with her friends"],nt:["hang out with ~","take a rest"]},
+  {q:"How will the girl get home?",o:["She will take the subway home.","She will walk the rest of the way.","The bus driver will bring her to her house."],nt:["nap","tiring","drop sb off","don't mind walking"]},
+  {q:"Why does the boy want ice skates?",o:["To play with his friends","To go ice skating with his sister","To give them to his sister for her birthday"],nt:["the perfect time of year","spend time with ~"]}]},
+ mt:{t:18,pg:"124–125",items:[
+  {q:"What does the brother want?",o:["A napkin to clean the table","More ice cream in his cup","A spoon to eat his ice cream with"],k:"C"},
+  {q:"Where is the store?",o:["On the left of the street corner","On the right of the street corner","On the left side of the house"],k:"A"},
+  {q:"Why does the girl color?",o:["To help time go by","To finish her homework","To help the waiter"],k:"A"},
+  {q:"Where will the father and son go next?",o:["To the art museum","To the football game","To the baseball field"],k:"C"},
+  {q:"What does the boy agree to do?",o:["Follow the vet's advice","Give the puppy medicine","Bring his puppy to the park"],k:"A"},
+  {q:"What does the boy want to do?",o:["Drink orange juice","Make sandwiches","Bake cookies"],k:"B"},
+  {q:"What will the girl do next?",o:["Draw a picture of the man","Tell what the man looked like","Find the watch that was stolen"],k:"B"},
+  {q:"What does the boy want?",o:["Chicken nuggets","A large amount of food","A grilled cheese sandwich"],k:"C"}]},
+ dt:{pg:"126–127",items:[
+  ["B: How come I have so much ice cream?","G: Because you asked for two big scoops instead of one.","B: Oh, that's {t|too} {m|much} {f|for} {|me}. Now I need a spoon to eat it.","G: I think you might need a couple of napkins too!"],
+  ["W: Oh no, I ran out of milk for our cookies. Can you {r|run} {|to} {t|the} {s|store} and buy milk?","G: I would love to, but I don't know where the store is.","W: It's not too far from here. Just walk to the street corner. It's on the left.","G: {A|are} {y|you} {s|sure} it's on the left side?","W: Of course, you will see the store."],
+  ["M: Welcome to Denny's Restaurant. Would you like a coloring sheet and crayons while you wait for a table?","G: Thank you, I love to color.","M: No problem. Waiting is very boring sometimes.","G: Yes, the restaurant looks very busy today.","M: Don't worry. Coloring will make {t|the} {t|time} {|go} {|by} {f|faster}.","G: I hope so."],
+  ["M: I can't believe it's still {r|raining} {o|outside}.","B: I hate rain. I really wanted to play baseball today.","M: Oh wait, I think the sky is clearing up!","B: Awesome. Let's go to the baseball field.","M: {S|sounds} {g|good}. I will get the baseball bat and gloves."],
+  ["M: Your puppy is just sick. There is nothing to worry about.","B: Oh, thank you, I {w|was} {s|sure/scared} there was something terribly wrong.","M: You just need to give your puppy a rest and some water to drink.","B: That sounds good. I will surely do that."],
+  ["G: This orange juice tastes delicious. Do you want to {t|try} {s|some}?","B: No thanks. I am really hungry though. I wish we had some bread and ham.","G: Why do you want bread and ham?","B: I want to make my famous ham sandwich!","G: That sounds better than my orange juice. I am {g|getting} {h|hungry} now."],
+  ["M: Hey, did you by chance see who stole that watch from the shelf?","G: I think so. He looked like an old grandpa with gray hair and big ears.","M: Can you tell my friend what he looked like? She will draw a picture of him.","G: Sure, I can try and remember all the details of what he looked like.","M: Thank you. That would be very helpful in order to {s|solve} {o|our} {c|case/crime}."],
+  ["W: Hello. Would you like to see our kids' menu? The serving sizes are smaller.","B: That's good. I cannot eat {|as} {m|much} {|as} my mom and dad.","W: Here is the kids' menu. What would you like to {o|order}?","B: I think I will have the grilled cheese sandwich and French fries.","W: Oh, really? Our chicken nuggets are the best thing on the kids' menu.","B: But I would like to eat cheese today, and I really like sandwiches."]]}},
+
+{n:15,c:"#f43f5e",t:"Why did he call?",u:"Unit 10 Short Messages · Listening Part 5",pg:"129–137",
+ qt:"Nghe tin nhắn thoại ngắn, tìm lý do người gọi hoặc điều họ muốn (3 lựa chọn).",
+ tips:["Đọc câu hỏi và các lựa chọn trước khi nghe tin nhắn.","Tin nhắn thường của bạn bè hoặc thầy cô: nghe xem họ gọi để làm gì.","Nếu câu hỏi hỏi chi tiết, tìm đúng thông tin đó."],
+ ex:{t:19,pg:"130–131",items:[
+  {q:"Why did Tyler call?",o:["To ask for his book back","To explain the reading book","To decide where to meet tomorrow"],k:"A",s:["B: Hey, Steve. It's Tyler. I forgot my book at your house. Can you bring it to school with you tomorrow? I will get it from you then."],w:"Tyler để quên sách ở nhà Steve và nhờ mang tới trường → xin lại sách."},
+  {q:"What did the father call about?",o:["The school trip","The movie time","The movie theater"],k:"B",s:["M: Hi, it's Dad. I'd like to know what time the movie starts. Please call me back, so I know what time I should be at the movie theater. Thanks."],w:"Bố hỏi mấy giờ phim bắt đầu → giờ chiếu phim."}]},
+ sp:[{p:"Can you bring ~?",e:["Can you bring your family picture?","Can you bring your dog to the park?"],y:"Can you bring ___ to ___?"},
+     {p:"Remember to ~",e:["Remember to close the window.","Remember to water the flowers."],y:"Remember to ___."}],
+ pr:{t:20,pg:"132–133",items:[
+  {q:"Why did Jenny call?",o:["To explain a fun game","To talk about the weather","To invite Sam to play outside"],nt:["make a snowman","explain"]},
+  {q:"Why did Jake call?",o:["To ask Carl for help","To tell Carl where the library is","To tell Carl about the math test"],nt:["have trouble with ~"]},
+  {q:"Why did the teacher call?",o:["To invite Brian to the zoo","To tell Brian to bring his toy","To ask about the guest speaker"],nt:["guest speaker","stuffed animal"]},
+  {q:"Why did Ben call?",o:["To talk about his friends","To borrow a sleeping bag","To invite Luke to go camping"],nt:["a few friends","sleeping bag","borrow"]},
+  {q:"What did the grandmother call about?",o:["Susan's jacket","Susan's school","House cleaning"],nt:["drop sth off at ~"]},
+  {q:"What does the teacher want from Ryan?",o:["His signed test paper","His reading book","His writing paper"],nt:["sign"]},
+  {q:"Why did John call?",o:["To tell Kyle to bring some snacks","To invite Kyle to play at the park","To ask about the new playground"],nt:["after school"]},
+  {q:"Why did Scott call?",o:["To explain how to rock climb","To sing at his birthday party","To invite Paul to eat pizza"],nt:["rock climbing"]}]},
+ mt:{t:21,pg:"134–135",items:[
+  {q:"Why did the mother call?",o:["To ask where to buy flowers","To explain how to water flowers","To tell Kayla to clean the windows"],k:"B"},
+  {q:"Why did Gina call?",o:["To talk about the new violin song","To tell Rachel to bring her violin","To ask to practice together"],k:"C"},
+  {q:"What did Ashley call about?",o:["Tennis practice","The nice old coach","The new tennis coach"],k:"C"},
+  {q:"Why did the teacher call?",o:["To tell Billy to bring a form to school","To explain the field trip program","To talk about the school project"],k:"A"},
+  {q:"What did Lucy lose?",o:["Her backpack","Her sketchbook","Her science project"],k:"B"},
+  {q:"What did the grandfather get at the store?",o:["Milk","A table","Cookies"],k:"A"},
+  {q:"What does Anna want?",o:["To go to a different school","To ride the bus with Michelle","To walk to school with Michelle"],k:"B"},
+  {q:"What is Amy keeping for Stephanie?",o:["Her library book","Her homework","Her backpack"],k:"C"}]},
+ dt:{pg:"136–137",items:[
+  ["W: Hi, Kayla. It's Mom. Please {r|remember} {|to} {w|water} the flowers by the window. Use one cup of water and don't pour it in too fast. Thanks."],
+  ["G: Hi, Rachel. This is Gina from music class. I need help playing the new violin song we learned today. Can I {s|?} {|?} {y|?} tomorrow, so I can {p|practice} {w|with} {y|you}?"],
+  ["G: Hey, Jane. It's Ashley. I am {c|calling} {a|about} our new tennis coach. Do you like him? I think the new coach is kind of mean. But maybe it's because our old coach was so nice. I want to hear {w|what} {y|you} {t|think}."],
+  ["M: Hello, Billy. This is your teacher, Mr. Smith. The school field trip is next week. You need a permission form from your parents. Please {b|bring} {|it} {w|with} {y|you} to school tomorrow. If you don't, you can't go on the field trip."],
+  ["G: Hi, Chloe. It's Lucy. Are you tired? I'm really tired now. I think it's because we were working on the art project for so long. By the way, I couldn't find my sketchbook {a|after} {|I} {c|came} {h|home}. Can you {l|look} {a|around} your room? Please tell me if it's there."],
+  ["M: Hi, Jake. It's your grandfather. I stopped at the store quickly to buy some milk, so you can have milk and cookies {f|for} {|a} {s|snack}. When you get to the house, please start doing your homework at the table. I will be back soon."],
+  ["G: Good morning, Michelle. It's Anna calling. My old friend rides a different school bus than me now because she {g|goes} {|to} {a|another} {s|school}. My mom thinks it's safer if I have a friend to ride the bus with. So, can I ride the bus with you, starting today? Do you think that would be OK?"],
+  ["G: Hello, Stephanie. This is Amy. I called because you left your backpack in the library. But don't worry about it because I'm {k|keeping} {|it} {f|for} {y|you}. I have lots of homework to do, so my mom said she can bring it to you. Call me back when you {g|get} {h|home}."]]}},
+
+{n:16,c:"#9d174d",t:"What is he talking about?",u:"Unit 10 Short Messages · Listening Part 5",pg:"138–145",
+ qt:"Nghe thông báo ngắn ở trường, chọn đáp án đúng (3 lựa chọn).",
+ tips:["Đọc câu hỏi và các lựa chọn trước khi nghe.","Thông báo thường của thầy cô hiệu trưởng hoặc giáo viên: tìm ý chính.","Nghe kỹ các chi tiết của thông báo."],
+ ex:{t:22,pg:"138–139",items:[
+  {q:"Why do the students need a library card?",o:["To buy books","To find books","To borrow books"],k:"C",s:["W: When you want to check out books, come up to the front desk. Bring your library card and show it to the person at the desk."],w:"Thủ thư dặn mang thẻ thư viện để mượn sách (check out books)."},
+  {q:"What is the teacher talking about?",o:["How to walk silently","Going outside to play","Being quiet in the hallway"],k:"C",s:["W: When we walk down the hallway, please be quiet. Do not talk loudly and try to walk silently. Let's not make any noise."],w:"Cô dặn không nói to, đi nhẹ khi qua hành lang → giữ yên lặng ở hành lang."}]},
+ sp:[{p:"Let's not ~",e:["Let's not run in the hallway.","Let's not play in this neighborhood."],y:"Let's not ___ at night."},
+     {p:"enjoy ~ing",e:["I enjoy dancing with my sister.","Mom enjoys talking to the lady next door."],y:"We enjoy ___."}],
+ pr:{t:23,pg:"140–141",items:[
+  {q:"What is the principal talking about?",o:["An event for the second grade class","Parents visiting the school","The story of the play"],nt:["the second grade","play"]},
+  {q:"What is the teacher talking about?",o:["The sunny weather","School ending early","Calling the parents"],nt:["because of ~","pick sb up"]},
+  {q:"What is the principal talking about?",o:["Learning how to dance","How to win a game","A school event"],nt:["school dance","get a prize","have fun"]},
+  {q:"What is the principal asking the students to do?",o:["Sign up for the contest","Take a trip to a big city","Practice spelling words"],nt:["sign up","main office","grand prize"]},
+  {q:"What should the baseball players do in the gym?",o:["Play catch","Practice running","Pick up baseballs"],nt:["thunder","baseball","gym","play catch"]},
+  {q:"What is the teacher talking about?",o:["The story of the golden lion","What pages to read in the book","What they did yesterday in class"],nt:["miss","quietly","by yourself"]},
+  {q:"What does the teacher ask the students to do?",o:["Bring materials for class","Draw a flower in a pot","Plant a flower outside"],nt:["plant","every year","material"]},
+  {q:"What is the coach talking about?",o:["Changing the practice schedule","A basketball game","A new member"],nt:["get to know","practice schedule"]}]},
+ mt:{t:24,pg:"142–143",items:[
+  {q:"What is the principal talking about?",o:["The books in the library","The school book fair","Buying books online"],k:"B"},
+  {q:"What is the principal talking about?",o:["A school holiday","Families going camping","Activities for a family night"],k:"C"},
+  {q:"How can students borrow the magazines?",o:["By writing their names down","By ordering the magazines","By telling the librarian"],k:"A"},
+  {q:"What is the teacher talking about?",o:["Everyone's birthdays","How to cook cupcakes","Bringing drinks to class"],k:"C"},
+  {q:"Why does Sam join the track team?",o:["To win medals","To run outside","To meet friends"],k:"C"},
+  {q:"What is the coach talking about?",o:["His basketball coach","His basketball life","His children"],k:"B"},
+  {q:"What is the principal talking about?",o:["Scary stories","A Halloween parade","Halloween costumes"],k:"C"},
+  {q:"What is the principal talking about?",o:["How to keep from getting sick","How early the class will end","How to stay warm in school"],k:"A"}]},
+ dt:{pg:"144–145",items:[
+  ["M: On Wednesday, we will have a book fair. At a book fair, you can {l|look} {|at} all different kinds of books. And you can buy the books that you like."],
+  ["W: Please invite your mom, dad, sisters, and brothers to our family fun night this Friday. We will have lots of {t|things} {|to} {|do} like games, watch movies, and even watch a play!"],
+  ["W: We just ordered some new magazines today. If you want to read them, please write your name {|on} {t|the} {p|paper} hanging on the wall. Then I will know {w|who} {|I} {s|should} {g|give} the magazines to first."],
+  ["M: Mary's birthday is tomorrow. She is going to bring cupcakes to {s|share} {w|with} everyone. I want each of you to bring your own drink. You could bring juice, milk, or water. We can celebrate Mary's birthday after story time."],
+  ["M: I would like to introduce the new runner to our team. This is Sam, and he was the fastest runner at his old school. He {w|wants} {|to} {j|join} our track team to meet new friends. So please, {w|welcome} {S|sam} by saying hello and introducing yourselves."],
+  ["M: Hello everyone. I am the new basketball coach {t|this} {y|year}. I started playing basketball 20 years ago. I was a very good player until I broke my ankle last year. I {e|enjoy} {t|teaching} basketball to young kids. It is a great sport to play."],
+  ["W: Next Friday is Halloween! To celebrate, you can wear a costume to school. For example, you can dress like a witch or a ghost. Your costume can be scary {l|like} {|a} {m|monster} or funny like a clown. But please, no fake blood. That can get messy, and it might scare some of the other students."],
+  ["M: There are many students getting sick these days. I want you to be extra careful, so you don't {g|get} {|a} {c|cold}. Please wash your hands with soap and cover your mouth when you cough. And drink as much water or orange juice as you can. I don't want to see any more students going home in the middle of class because they {|are} {n|not} {f|feeling} {w|well}."]]}}
+];
+
+/* ===== TIỆN ÍCH ===== */
+const $=s=>document.querySelector(s), app=$("#app");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=t=>String(t).padStart(3,"0");
+const SPK=/^([A-Z]\d?):\s*/, TOK=/\{([^|}]*)\|([^}]*)\}/g;
+function load(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let PROG=load("elp-prog",{}), SET=load("elp-set",{off:0,rate:0.85});
+const BYN={};LESSONS.forEach(L=>BYN[L.n]=L);
+const TL={};LESSONS.forEach(L=>{TL[L.ex.t]=`Lesson ${L.n} · Ví dụ`;TL[L.pr.t]=`Lesson ${L.n} · Luyện tập`;TL[L.mt.t]=`Lesson ${L.n} · Kiểm tra + Chính tả`;});
+const ORD=["ex","sp","pr","mt","dt"],TABN={ex:"📘 Ví dụ",sp:"🎤 Nói",pr:"✏️ Luyện tập",mt:"📝 Kiểm tra",dt:"✍️ Chính tả"};
+let CUR={},ANS={},MTDONE=false,SAY=[];
+const hasUnk=l=>/\|\?\}/.test(l);
+function fill(l){return l.replace(TOK,(x,h,a)=>{if(a==="?")return"…";let w=a.split("/")[0];if(h&&/[A-Z]/.test(h))w=w[0].toUpperCase()+w.slice(1);return w;});}
+function stars(r){return r>=0.875?"⭐⭐⭐":r>=0.6?"⭐⭐☆":r>0?"⭐☆☆":"☆☆☆";}
+
+/* ===== IndexedDB lưu audio ===== */
+let _db;
+function db(){return _db||(_db=new Promise((res,rej)=>{const r=indexedDB.open("elp-audio",1);r.onupgradeneeded=()=>r.result.createObjectStore("a");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));}
+function tx(mode,fn){return db().then(d=>new Promise((res,rej)=>{const t=d.transaction("a",mode);const r=fn(t.objectStore("a"));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);}));}
+const idbPut=(k,v)=>tx("readwrite",s=>s.put(v,k)), idbGet=k=>tx("readonly",s=>s.get(k)),
+      idbKeys=()=>tx("readonly",s=>s.getAllKeys()), idbDel=k=>tx("readwrite",s=>s.delete(k)), idbClear=()=>tx("readwrite",s=>s.clear());
+async function trackRec(t){const o=await idbGet("o:"+t);if(o)return o;return await idbGet("f:"+(t+(+SET.off||0)));}
+const URLC={};
+async function trackURL(t){if(URLC[t])return URLC[t];const r=await trackRec(t);if(!r)return null;return URLC[t]=URL.createObjectURL(r.blob);}
+function resetURL(){for(const k in URLC){URL.revokeObjectURL(URLC[k]);delete URLC[k];}}
+
+/* ===== Giọng máy & âm báo ===== */
+let VOICES=[];
+function loadV(){try{VOICES=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));}catch(e){}}
+if("speechSynthesis" in window){loadV();speechSynthesis.onvoiceschanged=loadV;}
+function speak(lines){
+  if(!("speechSynthesis" in window)){alert("Trình duyệt này không có giọng đọc.");return;}
+  speechSynthesis.cancel();
+  const us=VOICES.filter(v=>/en[-_]US/i.test(v.lang)),pool=us.length?us:VOICES;
+  lines.forEach(l=>{const m=l.match(SPK),s=m?m[1]:"";let t=(m?l.slice(m[0].length):l).replace(/^\(([ABC])\)\s*/,"$1. ").replace(/…/g,"");
+    const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=+SET.rate||0.85;const fem=/^[WG]/.test(s);
+    if(pool.length)u.voice=(pool.length>1&&s&&!fem)?pool[1]:pool[0];u.pitch=s?(fem?1.2:0.9):1;speechSynthesis.speak(u);});
+}
+let AC;
+function tone(ok){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();(ok?[523,659,784]:[330,262]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t0=AC.currentTime+i*.12;o.frequency.value=f;g.gain.setValueAtTime(.15,t0);g.gain.exponentialRampToValueAtTime(.001,t0+.25);o.connect(g).connect(AC.destination);o.start(t0);o.stop(t0+.3);});}catch(e){}}
+
+/* ===== GIAO DIỆN ===== */
+function starsTxt(n){const p=PROG[n];if(!p)return"Chưa làm";const a=[];if(p.mt)a.push(`Kiểm tra ${p.mt.s}/${p.mt.t} ${stars(p.mt.t?p.mt.s/p.mt.t:0)}`);if(p.dt)a.push(`Chính tả ${p.dt.s}/${p.dt.t}`);
+  if(p.spk){const v=Object.values(p.spk);if(v.length)a.push("Nói "+Math.round(v.reduce((x,y)=>x+y,0)/v.length));}return a.join(" · ")||"Chưa làm";}
+function vHome(){return `<div class="hero"><div class="big">🎀🎧</div><div><h2>Chào bé! Cùng luyện tiếng Anh nhé</h2><div class="note">8 bài (Lesson 9–16). Mỗi bài: Ví dụ · Nói (ghi âm + chấm AI) · Luyện tập · Kiểm tra · Chính tả.</div></div></div>
+<div class="grid">${LESSONS.map(L=>`<button class="lcard" style="background:${L.c}" data-go="L${L.n}-ex"><span class="u">${esc(L.u)}</span><b>Lesson ${L.n}</b><span>${esc(L.t)}</span><span class="stars">${starsTxt(L.n)}</span></button>`).join("")}</div>
+<div class="box"><b>🎧 Âm thanh:</b> <span id="audStat">đang kiểm tra…</span> <button class="btn" data-go="audio">Cài đặt âm thanh</button></div>
+<div class="box note"><b>Dành cho bố mẹ:</b> mở file bằng Chrome hoặc Edge. Lần đầu vào mục 🎧 để nạp audio (cần tải file từ Google Drive một lần). Sau đó phần nghe chạy offline; điểm của bé được lưu trên máy này.</div>`;}
+async function homeStat(){const el=$("#audStat");if(!el)return;try{let c=0;for(let t=1;t<=24;t++)if(await trackRec(t))c++;el.textContent=c?`đã có ${c}/24 track.`:"chưa nạp audio (cần làm 1 lần).";}catch(e){el.textContent="trình duyệt chặn bộ nhớ – hãy dùng Chrome/Edge.";}}
+
+function abox(t){return `<div class="abox" data-t="${t}"><span class="note">Đang tải audio Track ${pad(t)}…</span></div>`;}
+async function mountAudio(){for(const el of app.querySelectorAll(".abox")){const t=+el.dataset.t;let u=null;try{u=await trackURL(t)}catch(e){}
+  el.innerHTML=u?`<b>🎧 Track ${pad(t)}</b> <span class="note">${esc(TL[t]||"")}</span><audio controls preload="metadata" src="${u}"></audio><div class="note">Tốc độ: ${[0.75,0.9,1].map(r=>`<button class="mini ${r===1?"on":""}" data-act="spd" data-r="${r}">${r}x</button>`).join(" ")}</div>`
+  :`🔇 Chưa có file cho <b>Track ${pad(t)}</b>. <a href="#audio">Nạp audio</a> một lần để dùng offline. Tạm thời bé có thể bấm <b>🔊 Giọng máy</b> ở những câu có lời thoại.`;}}
+function sayBtn(lines){if(!lines||!lines.length)return"";const id=SAY.push(lines)-1;return `<button class="mini" data-act="say" data-id="${id}">🔊 Giọng máy</button>`;}
+function scriptHTML(lines){return `<div class="script">${lines.map(l=>{const m=l.match(SPK);return m?`<div><b>${m[1]}:</b> ${esc(l.slice(m[0].length))}</div>`:`<div>${esc(l)}</div>`}).join("")}</div>`;}
+function optsHTML(sec,i,it){
+  if(it.o)return `<div class="opts">${it.o.map((t,j)=>`<button class="opt" data-act="pick" data-sec="${sec}" data-i="${i}" data-l="${"ABC"[j]}"><span class="L">${"ABC"[j]}</span><span>${esc(t)}</span></button>`).join("")}</div>`;
+  return `<div class="opts abc">${["A","B","C"].map(l=>`<button class="opt" data-act="pick" data-sec="${sec}" data-i="${i}" data-l="${l}"><span class="L">${l}</span></button>`).join("")}</div>`;}
+const picNote=(L,pg)=>L.pic?`<p class="note">🖼️ Tranh gốc ở sách trang ${pg}. Dòng chữ là mô tả ngắn để bé làm được khi không mở sách.</p>`:"";
+function nextBtn(L,tab){const j=ORD.indexOf(tab);if(j<4)return `<div class="next"><button class="btn" data-go="L${L.n}-${ORD[j+1]}">Tiếp: ${TABN[ORD[j+1]]} →</button></div>`;
+  const N=LESSONS[LESSONS.indexOf(L)+1];return `<div class="next">${N?`<button class="btn" data-go="L${N.n}-ex">Sang Lesson ${N.n} →</button>`:`<button class="btn" data-go="home">🏠 Về trang chủ</button>`}</div>`;}
+
+function vEx(L){let h=`<div class="box tip"><b>Dạng bài:</b> ${L.qt}<ul>${L.tips.map(t=>`<li>${t}</li>`).join("")}</ul></div>`+picNote(L,L.ex.pg)+abox(L.ex.t);
+  L.ex.items.forEach((it,i)=>{h+=`<div class="box item" data-sec="ex" data-k="${it.k}"><div class="qh"><span class="num">${i+1}</span>${it.q?`<b>${esc(it.q)}</b>`:""}<span class="sp"></span>${sayBtn(it.s)}</div>${optsHTML("ex",i,it)}<div class="fb" hidden><span class="vd"></span>${scriptHTML(it.s)}<div class="note">💡 ${it.w}</div></div></div>`;});
+  return h+nextBtn(L,"ex");}
+function vPr(L){const audioOnly=!L.pr.items[0].o;
+  let h=`<div class="box note">✏️ Nghe Track ${pad(L.pr.t)} và chọn đáp án. Sách không in lời thoại và đáp án phần này nên app không chấm điểm – bố mẹ nghe cùng để kiểm tra.${audioOnly?" Đề không in lựa chọn: bé nghe rồi chọn A, B hoặc C.":""}</div>`+picNote(L,L.pr.pg)+abox(L.pr.t);
+  L.pr.items.forEach((it,i)=>{h+=`<div class="box item" data-sec="pr"><div class="qh"><span class="num">${i+1}</span>${it.q?`<b>${esc(it.q)}</b>`:""}</div>${optsHTML("pr",i,it)}${it.nt&&it.nt.length?`<div class="notes">📌 ${it.nt.map(x=>`<span class="chip">${esc(x)}</span>`).join(" ")}</div>`:""}</div>`;});
+  return h+`<div class="box"><button class="btn" data-act="prdone">✅ Xong</button><div id="prres"></div></div>`+nextBtn(L,"pr");}
+function vMt(L){let h=`<div class="box note">📝 Nghe Track ${pad(L.mt.t)}, chọn đáp án rồi bấm <b>Nộp bài</b>. Sách không in đáp án; đáp án ở đây được suy ra từ lời thoại in ở trang Chính tả (sách trang ${L.dt.pg}).${L.pic?"":!L.mt.items[0].o?" Đề không in lựa chọn – bé phải nghe.":""}</div>`+picNote(L,L.mt.pg)+abox(L.mt.t);
+  L.mt.items.forEach((it,i)=>{const lines=L.dt.items[i],unk=lines.some(hasUnk),f=lines.map(fill);
+    h+=`<div class="box item" data-sec="mt" data-k="${it.k}" data-u="${it.u?1:""}"><div class="qh"><span class="num">${i+1}</span>${it.q?`<b>${esc(it.q)}</b>`:""}<span class="sp"></span>${unk?'<span class="note">(câu này cần audio)</span>':sayBtn(f)}</div>${optsHTML("mt",i,it)}<div class="fb" hidden><span class="vd"></span><details><summary>Xem lời thoại</summary>${scriptHTML(f)}</details></div></div>`;});
+  return h+`<div class="box"><button class="btn" data-act="mtsub">📮 Nộp bài</button><div id="mtres"></div></div>`+nextBtn(L,"mt");}
+function dtLine(l){const m=l.match(SPK),body=m?l.slice(m[0].length):l;
+  return `<div class="dl">${m?`<b>${m[1]}:</b> `:""}${esc(body).replace(TOK,(x,h,a)=>`<span class="blank">${h?`<i>${h}</i>`:""}<input data-h="${h}" data-a="${a}" autocomplete="off" autocapitalize="off" spellcheck="false"></span>`)}</div>`;}
+function vDt(L){let h=`<div class="box note">✍️ Nghe lại Track ${pad(L.mt.t)} và điền từ còn thiếu (gõ cả từ). Chữ mờ là chữ cái đầu sách gợi ý. Sách không in đáp án: đáp án ở đây do người soạn suy ra từ ngữ cảnh; ô màu vàng là chỗ chưa xác định được – bé nghe audio để điền, không tính điểm.</div>`+abox(L.mt.t);
+  L.dt.items.forEach((it,i)=>{h+=`<div class="box"><span class="num">${i+1}</span>${it.map(dtLine).join("")}</div>`;});
+  return h+`<div class="box"><button class="btn" data-act="dtcheck">✅ Kiểm tra</button> <button class="btn ghost" data-act="dtshow">👀 Xem đáp án</button> <button class="btn ghost" data-act="redo">↺ Làm lại</button><div id="dtres"></div></div>`+nextBtn(L,"dt");}
+
+/* ===== PHẦN NÓI: ghi âm + chấm AI ===== */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let LOCAL=null,NOREC=false,ACTIVE=null;
+async function checkLocal(){if(!SR)return;try{
+  if(typeof SR.available==="function")LOCAL=await SR.available({langs:["en-US"],processLocally:true});
+  else if(typeof SR.availableOnDevice==="function")LOCAL=await SR.availableOnDevice("en-US");
+  if(LOCAL===true)LOCAL="available";}catch(e){LOCAL=null;}}
+const CONTR={"i'm":"i am","i'd":"i would","it's":"it is","that's":"that is","don't":"do not","doesn't":"does not","let's":"let us","there's":"there is","can't":"cannot","won't":"will not","you're":"you are","he's":"he is","she's":"she is","we'd":"we would","i'll":"i will","we're":"we are","they're":"they are"};
+function words(s){return s.toLowerCase().replace(/[’`]/g,"'").replace(/[^a-z0-9' ]+/g," ").split(/\s+/).filter(Boolean).flatMap(w=>(CONTR[w]||w).split(" ")).map(w=>w.replace(/'/g,"")).filter(Boolean);}
+const stem=w=>w.length>3?w.replace(/(es|s)$/,""):w;
+function lev(a,b){const d=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return d[b.length];}
+function eqW(a,b){return a===b||stem(a)===stem(b)||(a.length>=5&&b.length>=5&&lev(a,b)<=1);}
+function align(T,R){const n=T.length,m=R.length,d=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)d[i][j]=eqW(T[i],R[j])?d[i+1][j+1]+1:Math.max(d[i+1][j],d[i][j+1]);
+  const ok=new Array(n).fill(false);let i=0,j=0;while(i<n&&j<m){if(eqW(T[i],R[j])){ok[i]=true;i++;j++;}else if(d[i+1][j]>=d[i][j+1])i++;else j++;}return ok;}
+function vocab(L){const seen=new Set(),out=[];L.pr.items.forEach(it=>(it.nt||[]).forEach(v=>{
+  const w=v.replace(/~/g," ").replace(/\b(sb|sth)\b/g," ").replace(/[:–?]/g," ").replace(/\s+/g," ").trim(),k=w.toLowerCase();
+  if(w&&!seen.has(k)){seen.add(k);out.push(w);}}));return out;}
+function aiStatus(){
+  if(!SR)return "⚠️ Trình duyệt này không có nhận giọng nói nên không chấm AI được (hãy dùng Chrome hoặc Edge). Bé vẫn ghi âm, nghe lại, bố mẹ chấm.";
+  if(LOCAL==="available")return "✅ Máy này nhận giọng ngay trên thiết bị: chấm AI được cả khi offline.";
+  const inst=(LOCAL==="downloadable"&&(SR.install||SR.installOnDevice))?` <button class="mini" data-act="srinstall">⬇️ Tải bộ nhận giọng về máy (1 lần, cần mạng)</button>`:"";
+  return "🌐 Chấm AI dùng dịch vụ nhận giọng của trình duyệt nên <b>cần mạng</b>. Khi offline, bé vẫn ghi âm, nghe lại và bố mẹ chấm."+inst;}
+function vSp(L){
+  const best=(PROG[L.n]||{}).spk||{};
+  const row=(id,text,kind)=>`<div class="spk-item" data-kind="${kind}" data-id="${id}" data-t="${esc(text)}"><div class="qh"><span>${esc(text)}</span><span class="sp"></span>${sayBtn([text])} <button class="mini recbtn" data-act="rec">🎤 Nói</button></div><div class="best">${best[id]!=null?"Điểm cao nhất: "+best[id]:""}</div><div class="sres"></div></div>`;
+  let h=`<div class="box note">🎤 Bấm <b>🔊</b> nghe mẫu → bấm <b>🎤 Nói</b> rồi đọc to (bấm ⏹ để dừng sớm) → AI chấm điểm; bấm ▶ nghe lại giọng của bé.<br>${aiStatus()}</div>`;
+  L.sp.forEach((s,si)=>{
+    h+=`<div class="box"><h3>${esc(s.p)}</h3>${s.e.map((e,ei)=>row(`e${si}_${ei}`,e,"sent")).join("")}
+    <div class="spk-item" data-kind="turn" data-id="t${si}" data-pat="${esc(s.p)}" data-y="${esc(s.y)}"><div class="qh"><span><span class="note">Your turn!</span> ${esc(s.y)}</span><span class="sp"></span><button class="mini recbtn" data-act="rec">🎤 Nói câu của bé</button></div><div class="best">${best["t"+si]!=null?"Điểm cao nhất: "+best["t"+si]:""}</div><div class="sres"></div></div></div>`;});
+  const V=vocab(L);
+  if(V.length)h+=`<div class="box"><h3>📚 Từ vựng của bài</h3><div class="vgrid">${V.map((w,i)=>row("w"+i,w,"word")).join("")}</div></div>`;
+  return h+nextBtn(L,"sp");}
+async function startRec(){if(NOREC||!navigator.mediaDevices||!window.MediaRecorder)return null;
+  const st=await navigator.mediaDevices.getUserMedia({audio:true});const mr=new MediaRecorder(st),ch=[];
+  mr.ondataavailable=e=>{if(e.data.size)ch.push(e.data);};
+  const done=new Promise(res=>{mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());res(ch.length?new Blob(ch,{type:mr.mimeType||"audio/webm"}):null);};});
+  mr.start();return {mr,done};}
+function saveBest(it,sc){const n=CUR.L.n,id=it.dataset.id,p=PROG[n]||(PROG[n]={});p.spk=p.spk||{};
+  if(p.spk[id]==null||sc>p.spk[id]){p.spk[id]=sc;save("elp-prog",PROG);}it.querySelector(".best").textContent="Điểm cao nhất: "+p.spk[id];}
+function sentHTML(it,alts){const text=it.dataset.t,toks=text.split(/\s+/),T=[],own=[];
+  toks.forEach((tk,ti)=>words(tk).forEach(w=>{T.push(w);own.push(ti);}));
+  let b=null;for(const a of alts){const ok=align(T,words(a.t)),acc=T.length?ok.filter(Boolean).length/T.length:0,sc=Math.round(100*(a.c>0?0.85*acc+0.15*a.c:acc));if(!b||sc>b.sc)b={sc,ok,a};}
+  const tokOk=toks.map((_,ti)=>own.every((o,k)=>o!==ti||b.ok[k]));
+  saveBest(it,b.sc);tone(b.sc>=70);
+  const st=b.sc>=90?"⭐⭐⭐":b.sc>=70?"⭐⭐☆":b.sc>=40?"⭐☆☆":"☆☆☆";
+  const msg=b.sc>=90?"Excellent! Tuyệt vời!":b.sc>=70?"Good job! Khá lắm!":b.sc>=40?"Nice try! Cố thêm chút nữa nhé!":"Let's try again! Nghe mẫu rồi nói lại nhé!";
+  return `<div class="score">${b.sc}/100 ${st} <span class="note">${msg}</span></div><div>${toks.map((t,i)=>`<span class="${tokOk[i]?"wd-ok":"wd-miss"}">${esc(t)}</span>`).join(" ")}</div><div class="note">AI nghe được: “${esc(b.a.t)}”${tokOk.includes(false)?" · Từ gạch đỏ: AI chưa nghe rõ, bé luyện lại nhé.":""}</div>`;}
+function patKeys(p){const ks=p.replace(/\?/g,"").split("~").map(s=>s.trim()).filter(Boolean).map(s=>s==="ing"?["*ing"]:words(s));
+  if(ks[0]&&ks[0][0]==="be"&&ks[0].length>1)ks[0]=ks[0].slice(1);return ks;}
+function hasPat(W,keys){let pos=0;for(const k of keys){let f=-1;
+  for(let j=pos;j<W.length&&f<0;j++){if(k[0]==="*ing"){if(W[j].endsWith("ing"))f=j;}else if(k.every((w,x)=>W[j+x]&&eqW(w,W[j+x])))f=j;}
+  if(f<0)return false;pos=f+(k[0]==="*ing"?1:k.length);}return true;}
+function turnHTML(it,alts){const p=it.dataset.pat,keys=patKeys(p),kl=keys.reduce((s,k)=>s+k.length,0);let b=null;
+  for(const a of alts){const W=words(a.t),ok=hasPat(W,keys),sc=ok&&W.length>=kl+2?100:ok?70:W.length?40:0;if(!b||sc>b.sc)b={sc,ok,a};}
+  saveBest(it,b.sc);tone(b.ok);
+  return `<div class="score">${b.sc>=100?"⭐⭐⭐":b.sc>=70?"⭐⭐☆":"⭐☆☆"} ${b.ok?"Bé đã dùng đúng mẫu “"+esc(p)+"”. Good job!":"Chưa nghe thấy mẫu “"+esc(p)+"”. Thử lại theo khung: "+esc(it.dataset.y)}</div><div class="note">AI nghe được: “${esc(b.a.t)}” ${sayBtn([b.a.t])}</div>`;}
+function showResult(it,alts,err,blob){const out=it.querySelector(".sres");let h="";
+  if(alts&&alts.length)h=it.dataset.kind==="turn"?turnHTML(it,alts):sentHTML(it,alts);
+  else{const M={"no-speech":"AI chưa nghe thấy gì. Bé nói to, rõ và gần micro hơn nhé.","not-allowed":"Chưa được phép dùng micro. Bấm biểu tượng micro/ổ khóa trên thanh địa chỉ để cho phép.","service-not-allowed":"Trình duyệt chặn dịch vụ nhận giọng ở trang này.","network":"Chấm AI cần mạng nhưng đang mất kết nối.","offline":"Đang offline nên chưa chấm AI được.","nosr":"Trình duyệt này không có nhận giọng nói (dùng Chrome/Edge để chấm AI).","nomic":"Không mở được micro. Kiểm tra quyền micro của trình duyệt.","audio-capture":"Máy này không vừa ghi âm vừa nhận giọng cùng lúc được. Bấm 🎤 lần nữa: app chỉ chấm AI, không giữ bản ghi."};
+    h=`<div class="note">⚠️ ${M[err]||"Chưa nhận được kết quả ("+esc(err||"?")+")."}</div>`;
+    if(blob)h+=`<div class="note">Bố mẹ nghe bản ghi, so với mẫu 🔊 rồi chấm giúp bé:</div><button class="mini" data-act="selfrate" data-v="100">😀 Tốt</button> <button class="mini" data-act="selfrate" data-v="70">🙂 Khá</button> <button class="mini" data-act="selfrate" data-v="40">😐 Cần luyện thêm</button>`;}
+  if(blob){if(it._u)URL.revokeObjectURL(it._u);it._u=URL.createObjectURL(blob);h+=`<div class="pb">▶ Giọng của bé: <audio controls src="${it._u}"></audio></div>`;}
+  out.innerHTML=h;}
+
+function vLesson(L,tab){return `<div style="--c:${L.c}"><div class="lhead"><button class="btn ghost" data-go="home">← Bài học</button><div><div class="note">${esc(L.u)} · sách trang ${L.pg}</div><h2>Lesson ${L.n}: ${esc(L.t)}</h2></div></div>
+<div class="tabs">${ORD.map(k=>`<button class="tab ${k===tab?"on":""}" data-go="L${L.n}-${k}">${TABN[k]}</button>`).join("")}</div>${{ex:vEx,sp:vSp,pr:vPr,mt:vMt,dt:vDt}[tab](L)}</div>`;}
+
+function vAudio(){const rows=[];for(let t=1;t<=24;t++)rows.push(`<tr><td><b>${pad(t)}</b></td><td>${esc(TL[t])}</td><td id="st${t}">…</td><td style="white-space:nowrap"><button class="mini" data-act="ptest" data-t="${t}">▶</button> <label class="mini">Gán file<input type="file" accept="audio/*,.mp3" hidden data-ov="${t}"></label> <button class="mini" data-act="ovdel" data-t="${t}" title="Bỏ gán tay">↺</button></td></tr>`);
+return `<div style="--c:#ec4899"><h2>🎧 Cài đặt âm thanh</h2>
+<div class="box"><b>Làm một lần (chỉ lúc này cần mạng):</b><ol>
+<li>Mở các link Google Drive ở cuối trang, tải về máy các file <b>Track NNN.mp3</b> (nên tải hết vào một thư mục).</li>
+<li>Bấm <b>Chọn file audio</b>, chọn tất cả file vừa tải (chọn nhiều file cùng lúc được).</li>
+<li>App lưu audio vào bộ nhớ trình duyệt trên máy này. Từ đó dùng offline.</li></ol>
+<label class="btn">📂 Chọn file audio<input type="file" id="fAll" accept="audio/*,.mp3,.m4a,.wav" multiple hidden></label> <span id="loadMsg" class="note"></span>
+<p class="note" id="stored"></p></div>
+<div class="box"><b>Ghép số track</b><p class="note">App ghép theo số trong tên file: "Track 005.mp3" dùng cho bài in số 005 trong sách. Lesson 9–16 chỉ dùng số 001–024, trong khi Drive có 50 file, nên số trên đĩa có thể khác số in trong sách. Nếu nghe thấy không khớp, nhập <b>độ lệch</b> (ví dụ sách 001 = file 025 thì nhập 24) hoặc gán file riêng cho từng track ở bảng dưới.</p>
+Độ lệch: <input type="number" id="offIn" value="${+SET.off||0}" style="width:80px;font:inherit"></div>
+<div class="box"><b>24 track dùng trong app</b><table>${rows.join("")}</table></div>
+<div class="box"><b>🗣️ Giọng máy (dự phòng)</b><br>Tốc độ đọc: <input type="range" id="rateIn" min="0.5" max="1.1" step="0.05" value="${SET.rate}"> <span id="rateV">${SET.rate}</span>
+<p class="note">Dùng giọng đọc có sẵn của thiết bị, chỉ đọc được những câu có lời thoại in trong sách. Một số máy cần cài sẵn giọng tiếng Anh mới đọc được khi offline.</p></div>
+<details class="box"><summary><b>🔗 50 link audio trên Google Drive</b> (cần mạng)</summary><ol>${DRIVE.map(id=>`<li><a href="https://drive.google.com/file/d/${id}/view" target="_blank" rel="noopener">Mở file</a> · <a href="https://drive.google.com/uc?export=download&id=${id}" target="_blank" rel="noopener">Tải trực tiếp</a></li>`).join("")}</ol></details>
+<div class="box"><button class="btn ghost" data-act="clearall">🗑️ Xóa toàn bộ audio đã lưu</button></div></div>`;}
+async function mountAudioSettings(){try{for(let t=1;t<=24;t++){const el=$("#st"+t);if(!el)continue;const o=await idbGet("o:"+t),f=o?null:await idbGet("f:"+(t+(+SET.off||0)));
+  el.innerHTML=o?`✅ ${esc(o.name)} <span class="note">(gán tay)</span>`:f?`✅ ${esc(f.name)}`:"❌ chưa có";}
+  const ks=(await idbKeys()).map(String).filter(k=>k.startsWith("f:")).map(k=>+k.slice(2)).sort((a,b)=>a-b);
+  const s=$("#stored");if(s)s.textContent=ks.length?`Đã lưu ${ks.length} file: `+ks.map(pad).join(", "):"Chưa lưu file nào.";}
+  catch(e){const s=$("#stored");if(s)s.textContent="Trình duyệt chặn bộ nhớ IndexedDB. Hãy mở file bằng Chrome hoặc Edge.";}}
+
+function render(){
+  try{if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}
+  SAY=[];const h=location.hash.slice(1)||"home";
+  if(h==="audio"){app.innerHTML=vAudio();mountAudioSettings();}
+  else{const m=h.match(/^L(\d+)-(\w+)$/),L=m&&BYN[m[1]];
+    if(L){const tab=ORD.includes(m[2])?m[2]:"ex";CUR={L,tab};ANS={ex:{},pr:{},mt:{}};MTDONE=false;app.innerHTML=vLesson(L,tab);mountAudio();}
+    else{app.innerHTML=vHome();homeStat();}}
+  window.scrollTo(0,0);}
+
+/* ===== HÀNH ĐỘNG ===== */
+const norm=v=>v.trim().toLowerCase().replace(/[.,!?;:"“”]/g,"").replace(/’/g,"'");
+function judge(inp){const v=norm(inp.value),h=inp.dataset.h.toLowerCase(),a=inp.dataset.a.toLowerCase();if(a==="?")return"unk";if(!v)return"empty";const ans=a.split("/");return ans.includes(v)||(h&&ans.includes(h+v))?"ok":"bad";}
+let TA=new Audio();
+const ACT={
+  say:a=>speak(SAY[+a.dataset.id]),
+  spd:a=>{const box=a.closest(".abox"),au=box.querySelector("audio");au.playbackRate=+a.dataset.r;box.querySelectorAll("[data-act=spd]").forEach(b=>b.classList.toggle("on",b===a));},
+  pick:a=>{const sec=a.dataset.sec,i=+a.dataset.i,l=a.dataset.l,box=a.closest(".item");
+    if(sec==="ex"){if(box.dataset.done)return;box.dataset.done="1";const k=box.dataset.k;
+      box.querySelectorAll(".opt").forEach(b=>{if(b.dataset.l===k)b.classList.add("ok");else if(b===a)b.classList.add("bad");});
+      const fb=box.querySelector(".fb");fb.hidden=false;fb.querySelector(".vd").textContent=l===k?"🎉 Đúng rồi!":`💪 Chưa đúng. Đáp án là (${k}).`;tone(l===k);return;}
+    if(sec==="mt"&&MTDONE)return;box.querySelectorAll(".opt").forEach(b=>b.classList.toggle("sel",b===a));ANS[sec][i]=l;},
+  prdone:()=>{const n=CUR.L.pr.items.length,s=[];for(let i=0;i<n;i++)s.push(`${i+1}-${ANS.pr[i]||"?"}`);
+    $("#prres").innerHTML=`<p>Bé đã chọn: <b>${s.join(" · ")}</b></p><p class="note">Sách không in đáp án phần này. Bố mẹ nghe audio cùng bé để kiểm tra, rồi sang <b>Kiểm tra</b> để chấm điểm tự động.</p>`;tone(true);},
+  mtsub:()=>{if(MTDONE)return;const L=CUR.L,boxes=[...app.querySelectorAll('.item[data-sec="mt"]')],miss=boxes.filter((b,i)=>!ANS.mt[i]).length;
+    if(miss&&!confirm(`Còn ${miss} câu chưa chọn. Vẫn nộp bài?`))return;MTDONE=true;let s=0,t=0;
+    boxes.forEach((box,i)=>{const k=box.dataset.k,a=ANS.mt[i],u=box.dataset.u,note=u?" (đáp án suy luận – nên đối chiếu tranh/audio)":"";
+      box.querySelectorAll(".opt").forEach(b=>{b.classList.remove("sel");if(k&&b.dataset.l===k)b.classList.add("ok");else if(b.dataset.l===a)b.classList.add(k?"bad":"sel");});
+      const fb=box.querySelector(".fb"),vd=fb.querySelector(".vd");fb.hidden=false;
+      if(!k){vd.textContent=`⚠️ Bé chọn (${a||"–"}). Câu này chưa xác định được đáp án từ sách – bố mẹ xem tranh trang ${L.mt.pg} và nghe audio để chấm.`;return;}
+      t++;if(a===k){s++;vd.textContent="✅ Đúng rồi!"+note;}else vd.textContent=`❌ Chưa đúng. Đáp án (${k}).`+note;});
+    const p=PROG[L.n]||{};p.mt={s,t};PROG[L.n]=p;save("elp-prog",PROG);const r=t?s/t:0;
+    $("#mtres").innerHTML=`<div class="res">${r===1?"🏆":r>=0.6?"🌟":"💪"} Bé đúng <b>${s}/${t}</b> câu ${stars(r)}</div><button class="btn" data-act="redo">↺ Làm lại</button> <button class="btn ghost" data-go="L${L.n}-dt">Sang Chính tả →</button>`;tone(r>=0.6);},
+  dtcheck:()=>{const L=CUR.L;let s=0,t=0;app.querySelectorAll(".blank input").forEach(inp=>{const r=judge(inp);inp.classList.remove("ok","bad","unk");
+      if(r==="ok"){s++;t++;inp.classList.add("ok");}else if(r==="bad"){t++;inp.classList.add("bad");}else if(r==="empty")t++;else inp.classList.add("unk");});
+    const p=PROG[L.n]||{};p.dt={s,t};PROG[L.n]=p;save("elp-prog",PROG);const r=t?s/t:0;
+    $("#dtres").innerHTML=`<div class="res">${r===1?"🏆":r>=0.6?"🌟":"💪"} Đúng <b>${s}/${t}</b> ô ${stars(r)}</div><p class="note">Ô vàng: chưa có đáp án chuẩn, không tính điểm.</p>`;tone(r>=0.6);},
+  dtshow:()=>app.querySelectorAll(".blank input").forEach(inp=>{const a=inp.dataset.a;if(a==="?"){inp.placeholder="nghe audio";inp.classList.add("unk");}else inp.value=a.split("/")[0];}),
+  redo:()=>render(),
+  ptest:async a=>{const u=await trackURL(+a.dataset.t);if(!u){alert("Track này chưa có file.");return;}if(TA.src===u&&!TA.paused){TA.pause();return;}TA.src=u;TA.play();},
+  ovdel:async a=>{await idbDel("o:"+a.dataset.t);resetURL();mountAudioSettings();},
+  clearall:async()=>{if(!confirm("Xóa toàn bộ audio đã lưu trên máy này?"))return;await idbClear();resetURL();mountAudioSettings();},
+  selfrate:a=>{const it=a.closest(".spk-item");saveBest(it,+a.dataset.v);tone(+a.dataset.v>=70);},
+  srinstall:async a=>{a.disabled=true;a.textContent="Đang tải…";try{if(SR.install)await SR.install({langs:["en-US"],processLocally:true});else await SR.installOnDevice("en-US");await checkLocal();render();}catch(e){alert("Máy hoặc trình duyệt này chưa hỗ trợ tải bộ nhận giọng về máy.");a.disabled=false;}},
+  rec:async a=>{
+    if(ACTIVE){ACTIVE.stop();return;}
+    const it=a.closest(".spk-item"),out=it.querySelector(".sres"),label=a.textContent;
+    try{if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}
+    a.classList.add("on");a.textContent="⏹ Dừng";out.innerHTML='<span class="note">🎙️ Bé nói đi…</span>';
+    let rec=null;try{rec=await startRec();}catch(e){rec=null;}
+    const useAI=!!SR&&(navigator.onLine||LOCAL==="available");
+    let ended=false,timer;
+    const finish=async(alts,err)=>{if(ended)return;ended=true;clearTimeout(timer);ACTIVE=null;a.classList.remove("on");a.textContent=label;
+      let blob=null;if(rec){try{if(rec.mr.state!=="inactive")rec.mr.stop();}catch(e){}blob=await rec.done;}
+      if(err==="audio-capture"&&rec)NOREC=true;
+      showResult(it,alts,err,blob);};
+    if(useAI){const r=new SR();r.lang="en-US";r.interimResults=false;r.continuous=false;r.maxAlternatives=5;
+      if(LOCAL==="available"){try{r.processLocally=true;}catch(e){}}
+      let got=null,err=null;
+      r.onresult=e=>{got=Array.from(e.results[0]).map(x=>({t:x.transcript,c:x.confidence||0}));};
+      r.onerror=e=>{err=e.error;};
+      r.onend=()=>finish(got,got?null:(err||"no-speech"));
+      ACTIVE={stop:()=>{try{r.stop();}catch(e){finish(got,err);}}};
+      try{r.start();}catch(e){finish(null,"start");return;}
+    }else{if(!rec){finish(null,"nomic");return;}ACTIVE={stop:()=>finish(null,SR?"offline":"nosr")};}
+    timer=setTimeout(()=>ACTIVE&&ACTIVE.stop(),12000);}
+};
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");
+  if(g){e.preventDefault();const to="#"+g.dataset.go;if(location.hash===to)render();else location.hash=to;return;}
+  const a=e.target.closest("[data-act]");if(a&&ACT[a.dataset.act])ACT[a.dataset.act](a,e);});
+const toBlob=async f=>new Blob([await f.arrayBuffer()],{type:f.type||"audio/mpeg"});
+document.addEventListener("change",async e=>{const el=e.target;
+  if(el.id==="fAll"){const msg=$("#loadMsg");let ok=0;const skip=[];
+    for(const f of el.files){const m=f.name.replace(/\.[^.]+$/,"").match(/\d+/);if(!m){skip.push(f.name);continue;}
+      msg.textContent=`Đang lưu ${f.name}…`;try{await idbPut("f:"+parseInt(m[0],10),{name:f.name,blob:await toBlob(f)});ok++;}catch(err){skip.push(f.name+" (lỗi lưu)");}}
+    resetURL();msg.textContent=`Đã lưu ${ok} file.`+(skip.length?` Bỏ qua: ${skip.join(", ")}`:"");mountAudioSettings();}
+  else if(el.dataset&&el.dataset.ov){const f=el.files[0];if(!f)return;await idbPut("o:"+el.dataset.ov,{name:f.name,blob:await toBlob(f)});resetURL();mountAudioSettings();}
+  else if(el.id==="offIn"){SET.off=parseInt(el.value,10)||0;save("elp-set",SET);resetURL();mountAudioSettings();}});
+document.addEventListener("input",e=>{if(e.target.id==="rateIn"){SET.rate=+e.target.value;save("elp-set",SET);$("#rateV").textContent=SET.rate;}});
+addEventListener("hashchange",render);
+
+/* Hiện trang ngay; kiểm tra nhận giọng chạy nền, tối đa 1,5 giây */
+render();
+Promise.race([checkLocal(),new Promise(r=>setTimeout(r,1500))]).then(()=>{if(location.hash.endsWith("-sp"))render();}).catch(()=>{});
+</script>
+</body>
+</html>
